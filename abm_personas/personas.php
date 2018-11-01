@@ -1,5 +1,5 @@
 <?php
-	
+
 	require('../conexion.php');
     session_start();
 	$cat=$_SESSION['categoria'];
@@ -8,10 +8,10 @@
 
 	$query="SELECT p_dp_id, p.nombre as nusuario, apellido, dni, telefono1, dp.email as pemail FROM p_dp pd, personas p, datos_personales dp, usuario u WHERE pd.usuario_id_usuario= u.id_usuario and pd.personas_dni=p.dni and pd.datos_personales_id_dp=dp.id_dp and u.category_codigo= $cat and (p.nombre like '%$nomape%' or apellido like '%$nomape%') and (dni like '%$dni%' or telefono1 like '%$dni%')" ;
 
-		
+
 	$resultado=$mysqli->query($query);
-	echo $query;
-  
+	//echo $query;
+
 	?>
 
 
@@ -24,20 +24,20 @@
 </head>
 
 <body>
-	
+
 		<center><h1>Personas</h1></center>
 
 <div style="float: left;">
 			<input type="button" onclick=" location.href='nuevo_per.php'" value="Nueva Persona" name="boton" />
-			
+
 		</div>
 <div id="filtros" style="float: right;">
 			<form action="personas.php" method="post">
-			<p> Busqueda : 
+			<p> Busqueda :
 			<input type="text" name="busqueda" placeholder="nombre o apellido">  <input type="text" name="bdni" placeholder="DNI o Telefono">
 			<button type="submit">Filtrar</button></p>
 			</form>
-		</div>	
+		</div>
 		<p></p>
 
 
@@ -49,7 +49,7 @@
 					<th><b>NOMBRE</b></th>
 					<th><b>DNI</b></th>
 					<th><b>Telefono</b></th>
-					<th><b>Email</b></th>					
+					<th><b>Email</b></th>
 					<th><b>Modificar</b></th>
 					<th><b>Eliminar</b></th>
 
@@ -70,10 +70,10 @@
 							</td>
 							<td>
 								<?php echo $row['telefono1'];?>
-							</td>	
+							</td>
 							<td>
 								<?php echo $row['pemail'];?>
-							</td>	
+							</td>
 							<td>
 
 								<input type="button" onclick=" location.href='nuevo_per.php?dni=<?php echo $row['dni'];?>' " value="Modificar" name="botonM" />

@@ -1,6 +1,6 @@
 <?php
-//$server="localhost";
-$server="mysql.hostinger.com.ar";
+$server="localhost";
+//$server="mysql.hostinger.com.ar";
 $user="u410159394_reser";
 $bd="u410159394_reser";
 $clave="sistemas";
